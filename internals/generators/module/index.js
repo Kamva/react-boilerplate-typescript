@@ -19,6 +19,12 @@ module.exports = {
       ],
     },
     {
+      type: 'confirm',
+      name: 'wantHeaders',
+      default: false,
+      message: 'Do you want headers?',
+    },
+    {
       type: 'input',
       name: 'name',
       message: 'What should it be called?',
@@ -50,6 +56,12 @@ module.exports = {
       name: 'wantLoadable',
       default: true,
       message: 'Do you want to load resources asynchronously?',
+    },
+    {
+      type: 'confirm',
+      name: 'wantTypes',
+      default: true,
+      message: 'Do you want to have types.d.ts file',
     },
   ],
   actions: data => {
