@@ -10,11 +10,14 @@ const { exec } = require('child_process');
 const componentGenerator = require('./component/index.js');
 const containerGenerator = require('./container/index.js');
 const languageGenerator = require('./language/index.js');
+const moduleGenerator = require('./module/index');
 
 module.exports = plop => {
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('container', containerGenerator);
   plop.setGenerator('language', languageGenerator);
+  plop.setGenerator('module', moduleGenerator);
+
   plop.addHelper('directory', comp => {
     try {
       fs.accessSync(

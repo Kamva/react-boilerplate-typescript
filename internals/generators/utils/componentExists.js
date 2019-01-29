@@ -13,11 +13,11 @@ const pageContainers = fs.readdirSync(
   path.join(__dirname, '../../../app/containers'),
 );
 
-const module = fs.readdirSync(path.join(__dirname, '../../../app/module'));
+const modules = fs.readdirSync(path.join(__dirname, '../../../app/module'));
 const page = fs.readdirSync(path.join(__dirname, '../../../app/page'));
 const components = pageComponents
   .concat(pageContainers)
-  .concat(module)
+  .concat(modules)
   .concat(page);
 
 function componentExists(comp) {
