@@ -22,17 +22,17 @@ import injectSaga from 'utils/injectSaga';
 {{/if}}
 {{#if wantActionsAndReducer}}
 import injectReducer from 'utils/injectReducer';
-import select{{properCase name}} from './selectors';
-import reducer from './reducer';
+import select{{properCase name}} from 'module/{{properCase name}}/selectors';
+import reducer from 'module/{{properCase name}}/reducer';
 {{/if}}
 {{#if wantSaga}}
-import saga from './saga';
+import saga from 'module/{{properCase name}}/saga';
 {{/if}}
 {{#if wantMessages}}
-import messages from './messages';
+import messages from 'module/{{properCase name}}/messages';
 {{/if}}
 
-import { RootState } from './types';
+import { RootState } from 'module/{{properCase name}}/types';
 
 
 interface OwnProps {}

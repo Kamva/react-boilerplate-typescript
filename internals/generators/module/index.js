@@ -53,12 +53,6 @@ module.exports = {
     },
     {
       type: 'confirm',
-      name: 'wantLoadable',
-      default: true,
-      message: 'Do you want to load resources asynchronously?',
-    },
-    {
-      type: 'confirm',
       name: 'wantTypes',
       default: true,
       message: 'Do you want to have types.d.ts file',
@@ -157,25 +151,25 @@ module.exports = {
         abortOnFail: true,
       });
     }
+    if (data.wantTypes) {
+      actions.push({
+        type: 'add',
+        path: '../../app/module/{{properCase name}}/types.d.ts',
+        templateFile: './module/types.js.hbs',
+        abortOnFail: true,
+      });
+    }
 
     // If component wants messages
     if (data.wantMessages) {
       actions.push({
         type: 'add',
-        path: '../../app/components/{{properCase name}}/messages.ts',
+        path: '../../app/module/{{properCase name}}/messages.ts',
         templateFile: './module/messages.js.hbs',
         abortOnFail: true,
       });
     }
 
-    if (data.wantLoadable) {
-      actions.push({
-        type: 'add',
-        path: '../../app/component/{{properCase name}}/Loadable.ts',
-        templateFile: './module/loadable.js.hbs',
-        abortOnFail: true,
-      });
-    }
     return actions;
   },
 };
