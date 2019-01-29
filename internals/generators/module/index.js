@@ -41,6 +41,12 @@ module.exports = {
     },
     {
       type: 'confirm',
+      name: 'wantSaga',
+      default: true,
+      message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
+    },
+    {
+      type: 'confirm',
       name: 'wantLoadable',
       default: true,
       message: 'Do you want to load resources asynchronously?',
@@ -74,6 +80,72 @@ module.exports = {
         abortOnFail: true,
       },
     ];
+
+    // Actions
+    actions.push({
+      type: 'add',
+      path: '../../app/module/{{properCase name}}/actions.ts',
+      templateFile: './module/actions.js.hbs',
+      abortOnFail: true,
+    });
+    actions.push({
+      type: 'add',
+      path: '../../app/module/{{properCase name}}/tests/actions.test.ts',
+      templateFile: './module/actions.test.js.hbs',
+      abortOnFail: true,
+    });
+
+    // Constants
+    actions.push({
+      type: 'add',
+      path: '../../app/module/{{properCase name}}/constants.ts',
+      templateFile: './module/constants.js.hbs',
+      abortOnFail: true,
+    });
+
+    // Selectors
+    actions.push({
+      type: 'add',
+      path: '../../app/module/{{properCase name}}/selectors.ts',
+      templateFile: './module/selectors.js.hbs',
+      abortOnFail: true,
+    });
+    actions.push({
+      type: 'add',
+      path: '../../app/module/{{properCase name}}/tests/selectors.test.ts',
+      templateFile: './module/selectors.test.js.hbs',
+      abortOnFail: true,
+    });
+
+    // Reducer
+    actions.push({
+      type: 'add',
+      path: '../../app/module/{{properCase name}}/reducer.ts',
+      templateFile: './module/reducer.js.hbs',
+      abortOnFail: true,
+    });
+    actions.push({
+      type: 'add',
+      path: '../../app/module/{{properCase name}}/tests/reducer.test.ts',
+      templateFile: './module/reducer.test.js.hbs',
+      abortOnFail: true,
+    });
+
+    if (data.wantSaga) {
+      actions.push({
+        type: 'add',
+        path: '../../app/module/{{properCase name}}/saga.ts',
+        templateFile: './module/saga.js.hbs',
+        abortOnFail: true,
+      });
+      actions.push({
+        type: 'add',
+        path: '../../app/module/{{properCase name}}/tests/saga.test.ts',
+        templateFile: './module/saga.test.js.hbs',
+        abortOnFail: true,
+      });
+    }
+
     // If component wants messages
     if (data.wantMessages) {
       actions.push({
